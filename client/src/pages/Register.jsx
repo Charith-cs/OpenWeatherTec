@@ -20,7 +20,7 @@ export default function Register() {
             username: username.current.value,
             email: email.current.value,
             password: password.current.value,
-            confirmPasword: confirmPasword.current.value,
+            confirmPassword: confirmPassword.current.value,
             city:city.current.value,
             zip: zip.current.value,
             country: country.current.value,
@@ -30,8 +30,14 @@ export default function Register() {
             confirmPasword.current.setCustomValidity('Check your password again!');
         }else{
             try{
-                axios.defaults.withCreedentials = true;
-                await axios.post("https://open-weather-tec.vercel.app/api/user/register" , newUser);
+               axios.defaults.withCredentials = true;
+                await axios.post("https://open-weather-tec.vercel.app/api/user/register" , newUser,
+                                {
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        withCredentials: true // Ensure credentials (cookies, etc.) are sent
+                    });
             }catch(error){
                 console.log(error);
             }
