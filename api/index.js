@@ -14,14 +14,15 @@ app.listen(8800 , () => {
 }); 
 
 //middleware
-app.use(express.json());
-app.use(helmet());
-app.use(morgan("common"));
 app.use(cors({
     origin:["https://open-weather-tec-tupw.vercel.app"],
     methods:["POST", "GET"],
     Credentials:true
 }));
+app.use(express.json());
+app.use(helmet());
+app.use(morgan("common"));
+
 
 //routes
 app.use('/api/user' , userRoute);
