@@ -29,7 +29,7 @@ export default function Register() {
             confirmPasword.current.setCustomValidity('Check your password again!');
         }else{
             try{
-                await axios.post("/api/user/register" , newUser);
+                await axios.post("https://open-weather-tec.vercel.app/api/user/register" , newUser);
             }catch(error){
                 console.log(error);
             }
