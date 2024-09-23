@@ -8,7 +8,7 @@ export default function Register() {
     const username = useRef();
     const email = useRef();
     const password = useRef();
-    const confirmPasword = useRef();
+    const confirmPassword = useRef();
     const city = useRef();
     const zip = useRef();
     const country = useRef();
