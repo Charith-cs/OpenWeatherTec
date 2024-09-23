@@ -19,7 +19,7 @@ export default function Update() {
             country:country.current.value,
         };
         try{
-            await axios.put("/api/user/update/"+user._id , updatedData);   
+            await axios.put("https://open-weather-tec.vercel.app/api/user/update/"+user._id , updatedData);   
         }catch(error){
             console.log(error);
         }
