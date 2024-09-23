@@ -5,10 +5,10 @@ import axios from "axios";
 
 export default function Register() {
 
-    const username = useRef();
+     const username = useRef();
     const email = useRef();
     const password = useRef();
-    const confirmPassword = useRef();
+    const confirmPassword = useRef(); // fixed typo
     const city = useRef();
     const zip = useRef();
     const country = useRef();
@@ -16,34 +16,45 @@ export default function Register() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-         const newUser = {
+        const newUser = {
             username: username.current.value,
             email: email.current.value,
             password: password.current.value,
-            confirmPassword: confirmPassword.current.value,
-            city:city.current.value,
+            confirmPassword: confirmPassword.current.value, // fixed typo
+            city: city.current.value,
             zip: zip.current.value,
             country: country.current.value,
-            
-        }
-        if(password.current.value !== confirmPasword.current.value){
-            confirmPasword.current.setCustomValidity('Check your password again!');
-        }else{
-            try{
-               axios.defaults.withCredentials = true;
-                await axios.post("https://open-weather-tec.vercel.app/api/user/register" , newUser,
-                                {
+        };
+
+        if (password.current.value !== confirmPassword.current.value) {
+            confirmPassword.current.setCustomValidity('Passwords do not match!');
+        } else {
+            try {
+                // Enable credentials for cross-origin requests
+                axios.defaults.withCredentials = true;
+
+                // Send POST request to the server
+                const response = await axios.post(
+                    "https://open-weather-tec.vercel.app/api/user/register",
+                    newUser,
+                    {
                         headers: {
                             "Content-Type": "application/json"
                         },
                         withCredentials: true // Ensure credentials (cookies, etc.) are sent
-                    });
-            }catch(error){
-                console.log(error);
+                    }
+                );
+
+                // Check if registration was successful
+                if (response.status === 200) {
+                    navigate("/login"); // Navigate to login only if the response is successful
+                }
+            } catch (error) {
+                console.error("Error registering user:", error.response ? error.response.data : error.message);
             }
         }
-        navigate("/login");
     };
+
 
   return (
     <div>
