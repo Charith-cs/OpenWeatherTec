@@ -30,6 +30,7 @@ export default function Register() {
             confirmPasword.current.setCustomValidity('Check your password again!');
         }else{
             try{
+                axios.defaults.withCreedentials = true;
                 await axios.post("https://open-weather-tec.vercel.app/api/user/register" , newUser);
             }catch(error){
                 console.log(error);
