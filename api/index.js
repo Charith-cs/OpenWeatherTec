@@ -17,7 +17,11 @@ app.listen(8800 , () => {
 app.use(express.json());
 app.use(helmet());
 app.use(morgan("common"));
-app.use(cors());
+app.use(cors({
+    origin:["https://open-weather-tec-9nlt-l8yofw3v9-charith-sankalpas-projects.vercel.app"],
+    methods:["POST", "GET"],
+    Credentials:true
+}));
 
 //routes
 app.use('/api/user' , userRoute);
