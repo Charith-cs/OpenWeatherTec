@@ -13,7 +13,7 @@ dotenv.config();
 
 // Middleware
 app.use(cors({
-    origin: ["https://open-weather-tec-tupw.vercel.app"], // Your frontend origin
+    origin: ["https://build-form-final-front.vercel.app"], // Your frontend origin
     methods: ["POST", "GET", "OPTIONS"], // Include OPTIONS for preflight
     credentials: true, // Allows credentials (cookies, authorization headers)
     allowedHeaders: ["Content-Type", "Authorization"] // Explicitly allow these headers
