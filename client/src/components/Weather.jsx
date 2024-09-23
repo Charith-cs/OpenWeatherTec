@@ -20,7 +20,7 @@ export default function Weather() {
   useEffect(()=>{
      const getWeather = async ()=> {
       try{
-        const res = await axios.get("/api/weather/"+user._id);
+        const res = await axios.get("https://open-weather-tec.vercel.app/api/weather/"+user._id);
         setWeather(res.data);
       }catch(error){
         console.log(error);
